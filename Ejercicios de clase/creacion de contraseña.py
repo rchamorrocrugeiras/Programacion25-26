@@ -1,5 +1,5 @@
 import random
-def generar_contraseña():
+def xeradorContrasinais():
     letras_mayus = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     letras_minus = "abcdefghijklmnopqrstuvwxyz"
     numeros = "0123456789"
@@ -7,13 +7,13 @@ def generar_contraseña():
 
     todos = letras_mayus + letras_minus + numeros + simbolos
 
-    longitud = random.randint(6, 12)
+    lonxitud = random.randint(6, 12)
 
     contraseña = ""
-    for _ in range(longitud):
+    for _ in range(lonxitud):
         contraseña += random.choice(todos)
 
     return contraseña
 
 # Verificamos se funciona
-print ("Contraseña generada:", generar_contraseña())
+print ("Contraseña generada:", xeradorContrasinais())
