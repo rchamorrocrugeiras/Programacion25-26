@@ -1,3 +1,5 @@
+# Xerar unha contrasinal aleatoria de entre 6-12 diferentes caracteres
+
 import random
 def xeradorContrasinais():
     letras_mayus = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
