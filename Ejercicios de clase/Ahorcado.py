@@ -7,6 +7,8 @@ letras_adivinadas = []
 intentos = 7
 fallos = 0
 
+palabras = palabra.lower
+
 def debuxa_boneco(fallos):
     if fallos == 1:
         for i in range(6):
