@@ -1,11 +1,10 @@
 # Programa que utilizando un menú de opcións calcule a superficie de distintas figuras
 
 print('''
- [1] Superficie de triángulo
- [2] Superficie de cuadrado
- [3] Superficie del círculo
- [4] Salir''')
-
+[1] Superficie de triángulo
+[2] Superficie de cuadrado
+[3] Superficie del círculo
+[4] Salir''')
 
 opcion = (int(input('Elija una opcion: ')))
 
