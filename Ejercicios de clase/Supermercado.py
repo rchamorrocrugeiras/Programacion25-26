@@ -40,16 +40,23 @@ def contenido_cajas(efectivos):
         print()    
 
 def contenido_cajas_total(efectivos):
+    resumen = {}
     for caja in efectivos:
-        mostrador = caja[1:]
-        suma = 0
-        for lista in mostrador:
-            suma = lista[0], lista[1]
-            print(suma)
-        print()    
+        for valor, cantidad in caja[1:]:
+            resumen[valor] = resumen.get(valor, 0) + cantidad
+    for valor in sorted(resumen, reverse=True):
+        print((valor, resumen[valor]))
 
 
-print(efectivo_cajas(efectivo))
-print(efectivo_cajas_total(efectivo))
-print(contenido_cajas(efectivo))
-print(contenido_cajas_total(efectivo))
+
+def resumen_supermercado(efectivos):
+    print("=== Importe por caja ===")
+    efectivo_cajas(efectivos)
+    print("\n=== Importe total ===")
+    efectivo_cajas_total(efectivos)
+    print("\n=== Contenido por caja ===")
+    contenido_cajas(efectivos)
+    print("\n=== Contenido total ===")
+    contenido_cajas_total(efectivos)
+
+resumen_supermercado(efectivo)
