@@ -13,7 +13,7 @@ def main():
     while segundo + segundos_mas >= 60:
         segundo = segundo + segundos_mas - 60
         minuto += 1
-        segundos_mas = 0  # ya se han sumado
+        segundos_mas = 0 
 
     segundo += segundos_mas
 
