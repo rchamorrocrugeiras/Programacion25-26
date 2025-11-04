@@ -83,3 +83,58 @@ def comprobar_caracteres_especiais(contrasinal):
                 return True
 
 
+# 5.
+
+def ver_caracter(contrasinal):
+    caracter_especial = "!@#$%&*_."
+    valido = False
+    for char in contrasinal:
+        if char in caracter_especial:
+            valido = True
+
+    return valido
+
+t1 = "abcd1"
+t2 = "A2!d"
+t3 = "#Bcd"
+t4 = "a1%&"
+print(ver_caracter(t1))
+print(ver_caracter(t2))
+print(ver_caracter(t3))
+print(ver_caracter(t4))
+
+
+# 6.
+
+def contraseña_valida():
+    nom = str(input("Ingresa tu nombre: "))
+    cont = str(input("Ingresa tu contraseña: "))
+    nome_cont = [nom, cont]
+    nome_contrasinal = []
+    caracteres = ["!","@","#","$","%","&","*","_","."]
+    valido = False
+    digit = False
+    mayus = False
+    carac = False
+    while valido == False and cont != "":
+        if len(cont) >= 8:
+            for char in cont:
+                if char.isdigit():
+                    digit = True
+                elif char in caracteres:
+                    carac = True
+                elif char == char.upper():
+                    mayus = True
+            valido = (digit and carac and mayus)
+        else:
+            print(False)
+            print("Contraseña invalida")
+            print("Numero:", digit)
+            print("Caracteres:", carac)
+            print("Mayus:", mayus)
+            cont = str(input("Ingresa tu contraseña: "))
+
+    nome_contrasinal.append(nome_cont)
+    return True
+
+print(contraseña_valida())
