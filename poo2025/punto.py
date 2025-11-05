@@ -9,3 +9,6 @@ class Punto:
     def toString(self):
         cadeaPunto = "As coordenadas do punto son: \n\t x = "+ str(self.x) + " \n\t y = "+ str(self.y)
         return cadeaPunto
+    
+    def __str__(self):
+        return self.toString()
