@@ -8,4 +8,4 @@ dni = numero % 23
 
 for i in letras.keys():
     if i == dni:
-        print('O DNI completo é:', numero, letras[i])
+        print(f"O DNI completo é: {numero}{letras[i]}")
