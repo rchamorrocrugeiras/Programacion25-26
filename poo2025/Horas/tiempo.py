@@ -51,8 +51,10 @@ class Tiempo:
                         self.setSegundo (s)
                         
     def __asignacionHoraColeccion(self, hora):
-        self.setHora (hora) 
-        if len(hora) == 3:
+        self.setHora(0) 
+        self.setMinuto(0)
+        self.setSegundo(0)
+        if len (hora) > 0:
             h = int(hora[0])
             if h >= 0 and h < 24:
                 self.setHora (h)
