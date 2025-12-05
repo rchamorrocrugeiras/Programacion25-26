@@ -18,11 +18,11 @@ Crear unha clase Principal co método main. Crear un libro con cada construtor e
 
 class Libro:
     def __init__(self, titulo, autor, ano, numPaginas, valoracion):
-        self.__titulo = titulo
-        self.__autor = autor
-        self.__ano = ano
-        self.__numPaginas = numPaginas
-        self.__valoracion = valoracion
+        self.set_titulo(titulo)
+        self.set_autor(autor)
+        self.set_ano(ano)
+        self.set_numPaginas(numPaginas)
+        self.set_valoracion(valoracion)
 
     # Getters
     def get_titulo(self):

@@ -27,7 +27,7 @@ class Data:
             if day > 0 and day <= diasmes[mes]:
                 self.__day = day
             else:
-                if mes == 2 and self.eBisiesto(self.year):
+                if mes == 2 and self.eBisiesto(self.__year):
                     if day == 29:
                         self.__day = 29
                 else:
