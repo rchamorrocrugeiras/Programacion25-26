@@ -1,193 +1,103 @@
 from datetime import time
 
 class Tiempo:
-    def __init__(self, s, m, h):
-        self.setS(s)
-        self.setM(m)
-        self.setH(h)
+    """Clase que representa un tiempo en formato HH:MM:SS"""
 
-    '''
-    def __init__(self, hora = 0, *minutoSegundo ):
-        if isinstance (hora, int):
-            self.__asignacionHoraInt(hora, minutoSegundo)
-                    
-        if type = (hora) == str:
-            self.__asignacionHoraStr (hora)
-        
-        if isinstance (hora, list) or isinstance (hora, tuple):
+    def __init__(self, hora=0, *extra):
+        self.__h = 0
+        self.__m = 0
+        self.__s = 0
+
+        if isinstance(hora, int):
+            self.__asignacionHoraInt(hora, extra)
+        elif isinstance(hora, str):
+            self.__asignacionHoraStr(hora)
+        elif isinstance(hora, (list, tuple)):
             self.__asignacionHoraColeccion(hora)
-            
-        if isinstance (hora, float):
-            self.__asignacionHoraFloat (hora)      
-            
-            
-    def __asignacionHoraInt(self, hora):
-        self.setHora (hora)
-        if len(minutoSegundo) == 1:
-            if isinstance (minutoSegundo[0], int):
-                self.setMinuto (minutoSegundo[0])
-        elif len(minutoSegundo) == 2:
-            if isinstance (minutoSegundo[0], int):
-                self.setMinuto (minutoSegundo[0])
-            if isinstance (minutoSegundo[1], int):
-                self.setMinuto (minutoSegundo[1])
-                
+        elif isinstance(hora, float):
+            self.__asignacionHoraFloat(hora)
+
+    # Asignaciones
+    def __asignacionHoraInt(self, h, extra):
+        self.setH(h)
+        if len(extra) >= 1:
+            self.setM(extra[0])
+        if len(extra) == 2:
+            self.setS(extra[1])
+
     def __asignacionHoraStr(self, hora):
-        self.setHora (hora)
-        if len(hora) == 8:
-            if hora[2] == ":2 and hora[5] == ":":
-                hms = hora.split(":")
-                if hms[0].isnumeric():
-                    h = int(hms[0])
-                    if h >=0 and h < 24:
-                        self.setHora (h)
-                if hms[1].isnumeric():
-                    m = int(hms[1])
-                    if m >= 0 and m < 60:
-                        self.setMinuto (m)
-                if hms[2].isnumeric():
-                    s = int(hms[2])
-                    if s >= 0 and s < 60:
-                        self.setSegundo (s)
-                        
-    def __asignacionHoraColeccion(self, hora):
-        self.setHora(0) 
-        self.setMinuto(0)
-        self.setSegundo(0)
-        if len (hora) > 0:
-            h = int(hora[0])
-            if h >= 0 and h < 24:
-                self.setHora (h)
-            m = int(hms[1])
-            if m >= 0 and m < 60:
-                self.setMinuto (m)
-            s = int(hms[2])
-            if s >= 0 and s < 60:
-                self.setSegundo (s)         
-                        
-                        
-                        
+        if len(hora) == 8 and hora[2] == ":" and hora[5] == ":":
+            h, m, s = hora.split(":")
+            if h.isdigit(): self.setH(int(h))
+            if m.isdigit(): self.setM(int(m))
+            if s.isdigit(): self.setS(int(s))
+
+    def __asignacionHoraColeccion(self, col):
+        h = int(col[0]) if len(col) > 0 else 0
+        m = int(col[1]) if len(col) > 1 else 0
+        s = int(col[2]) if len(col) > 2 else 0
+        self.setH(h)
+        self.setM(m)
+        self.setS(s)
+
     def __asignacionHoraFloat(self, hora):
         h = int(hora)
-        self.setHora(h)
-
+        self.setH(h)
         resto = (hora - h) * 60
         m = int(resto)
-        self.setMinuto(m)
-
+        self.setM(m)
         s = int((resto - m) * 60)
-        self.setSegundo(s)               
-                        '''
+        self.setS(s)
 
+    # Setters
+    def setS(self, s): self.__s = s if isinstance(s,int) and 0 <= s < 60 else 0
+    def setM(self, m): self.__m = m if isinstance(m,int) and 0 <= m < 60 else 0
+    def setH(self, h): self.__h = h if isinstance(h,int) and 0 <= h < 24 else 0
+
+    # Getters
+    def getS(self): return self.__s
+    def getM(self): return self.__m
+    def getH(self): return self.__h
+
+    # Conversiones
+    def AS(self): return self.__h*3600 + self.__m*60 + self.__s
+    def AM(self): return self.__h*60 + self.__m + self.__s/60
+    def AH(self): return self.__h + self.__m/60 + self.__s/3600
+
+    # Incrementos
+    def incrementarSegundos(self, s):
+        total = self.AS() + s
+        total %= 24*3600
+        self.__h = total//3600
+        total %= 3600
+        self.__m = total//60
+        self.__s = total%60
+
+    def incrementarMinutos(self, minutos):
+        segundos = int(minutos*60)
+        self.incrementarSegundos(segundos)
+
+    def incrementarHoras(self, horas):
+        segundos = int(horas*3600)
+        self.incrementarSegundos(segundos)
+
+    # Representación
     def __str__(self):
         return f"{self.__h:02d}:{self.__m:02d}:{self.__s:02d}"
 
-    def setS(self, s):
-        if type(s) == int:
-            if s < 60 and s >= 0:
-                self.__s = s
-            else:
-                self.__s = 0
-        else: self.__s = 0
-        return self.__s
 
-    def setM(self, m):
-        if type(m) == int:
-            if m < 60 and m >= 0:
-                self.__m = m
-            else:
-                self.__m = 0
-        else:
-            self.__m = 0
-        return self.__m
+# PRUEBAS
 
-    def setH(self, h):
-        if type(h) == int:
-            if h < 24 and h >= 0:
-                self.__h = h
-            else:
-                self.__h = 0
-        else:
-            self.__h = 0
-        return self.__h
+h1 = Tiempo(23, 59, 59)
+h2 = Tiempo()
+h3 = Tiempo(12)
+h4 = Tiempo(12, 10, 30)
+h4.incrementarMinutos(10.5)
+h5 = Tiempo([230,240,560,56])
+h5.incrementarMinutos(5.5)
 
-
-    def getS(self):
-        return self.__s
-
-    def getM(self):
-        return self.__m
-
-    def getH(self):
-        return self.__h
-
-    def AS(self):
-        return self.__h * 3600 + self.__m * 60 + self.__s
-
-    def AM(self):
-        return self.__h * 60 + self.__m + self.__s / 60
-
-    def AH(self):
-        return self.__h + self.__m / 60 + self.__s / 3600
-
-
-    def incremetoS(self, s):
-
-        total = self.__h * 3600 + self.__m * 60 + self.__s + s
-
-        total = total % (24 * 3600)
-
-        self.__h = total // 3600
-        total = total % 3600
-        self.__m = total // 60
-        self.__s = total % 60
-
-    '''PROFE
-        def incremetoSeg(self, s):
-
-            s = s % 60
-            self.__s = self.__s + s
-            if self.__s >= 60:
-                self.__s = self.__s % 60
-                self.__m += 1
-                if self.__m >= 60:
-                    self.__m = self.__m % 60
-                    self.__h += 1
-                    if self.__h >= 24:
-                        self.__h = self.__h % 24
-            m = s // 60
-            self.__m = self.__m + m
-            if self.__m >= 60:
-                self.__m = self.__m % 60
-                self.__h += 1
-                if self.__h >= 24:
-                    self.__h = self.__h % 24
-            h = s // 3600
-            self.__h = self.__h + h
-            if self.__h > 23:
-                self.__h = self.__h % 24
-    '''
-
-    def incremetoM(self, m):
-
-
-        total = self.__h * 3600 + self.__m * 60 + self.__s + m * 60
-
-        total = total % (24 * 3600)
-
-        self.__h = total // 3600
-        total = total % 3600
-        self.__m = total // 60
-        self.__s = total % 60
-
-
-    def incremetoH(self, h):
-
-        total = self.__h * 3600 + self.__m * 60 + self.__s + h * 3600
-
-        total = total % (24 * 3600)
-
-        self.__h = total // 3600
-        total = total % 3600
-        self.__m = total // 60
-        self.__s = total % 60
+print(h1)  
+print(h2)  
+print(h3)  
+print(h4)  
+print(h5)  
