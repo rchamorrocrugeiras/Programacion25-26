@@ -74,7 +74,6 @@ class Libro:
         )
 
 
-# Clase Principal
 class Principal:
     def main():
         libro1 = Libro("Aprender Python", "Manuel Guimarey", 2018, 417, 4.9)
