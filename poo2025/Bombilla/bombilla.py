@@ -11,16 +11,19 @@ class Bombilla():
         self.__encendida = False
 
     def estado(self):
+        return self.__encendida
+
+    def __str__(self):
         return "Encendida" if self.__encendida else "Apagada"
 
 
 # Pruebas
-bombilla = Bombilla()
+b1 = Bombilla()
 
-print("Estado inicial", bombilla.estado())
+print("Estado inicial:", b1.__str__())
 
-bombilla.enciende()
-print("Estado actual:", bombilla.estado())
+b1.enciende()
+print("Estado actual:", b1.__str__())
 
-bombilla.apaga()
-print("Estado actual:", bombilla.estado())
+b1.apaga()
+print("Estado actual:", b1.__str__())
