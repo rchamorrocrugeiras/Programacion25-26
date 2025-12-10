@@ -1,4 +1,6 @@
 class Bombilla():
+    interruptorGeneral = False
+
     def __init__(self):
         self.__encendida = False
 
@@ -10,14 +12,17 @@ class Bombilla():
     def apaga(self):
         self.__encendida = False
 
-    def estado(self):
-        return self.__encendida
-
     def conmuta(self):
         self.__encendida = not self.__encendida
 
+    def estado(self):
+        return self.__encendida
+
+    def estaEncendida(self):
+        return self.__encendida and Bombilla.interruptorGeneral
+
     def __str__(self):
-        return "La bombilla está encendida" if self.__encendida else "La bombilla está apagada"
+        return "La bombilla está encendida" if self.__encendida and Bombilla.interruptorGeneral else "La bombilla está apagada"
 
 
 # Pruebas
@@ -27,8 +32,6 @@ b2 = Bombilla()
 print(b1)
 print(b2)
 b1.enciende()
-print(b1)
-print(b2)
-b1.conmuta()
+Bombilla.interruptorGeneral = True
 print(b1)
 print(b2)
