@@ -24,7 +24,9 @@ def validar_contraseña(contraseña):
         elif caracter in números:
             tiene_num = True
 
-    return tiene_mayus and tiene_minus and tiene_num
+    print(f"Tiene mayúsculas?: {tiene_mayus}")
+    print(f"Tiene minúsculas?: {tiene_minus}")
+    print(f"Tiene números?: {tiene_num}")
 
 
 print(validar_contraseña(contraseña))
