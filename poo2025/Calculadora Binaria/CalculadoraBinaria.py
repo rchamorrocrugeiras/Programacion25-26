@@ -27,12 +27,14 @@ class CalculadoraBinaria:
     def operacion(self, operando):
         if operando == "+":
             return self.__a + self.__b
-        if operando == "-":
+        elif operando == "-":
             return self.__a - self.__b
-        if operando == "*":
+        elif operando == "*":
             return self.__a * self.__b
-        if operando == "/":
+        elif operando == "/":
             return self.__a / self.__b
+        else:
+            raise ValueError("Operando non válido")
 
 
     a = property(get_a, set_a)
