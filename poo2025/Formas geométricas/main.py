@@ -36,3 +36,32 @@ print(manuela == manuel)
 print(manuela > manuel)
 print(manuela < manuel)
 '''
+
+# Punto 2
+def prueba_punto():
+    # Creando punto (3, 4)
+    p = Punto2(3, 4)
+    print(p)
+
+    # Probando setters con valores válidos
+    p.x = 10
+    p.y = 20
+    print(p)
+
+    # Probando setters con valores negativos (deben ponerse a 0)
+    p.x = -5
+    p.y = -8
+    print(p)
+
+    # Probando getters
+    print("x =", p.x)
+    print("y =", p.y)
+
+    # Probando error de tipo
+    try:
+        p.x = "hola"
+    except TypeError as e:
+        print("Error,", e)
+
+if __name__ == "__main__":
+    prueba_punto()

@@ -10,7 +10,7 @@ class Punto2:
             else:
                 self.__x = 0
         else:
-            self.__x = 0
+            raise TypeError ("O tipo non é válido")
 
     def setY(self, y):
         if type(y) == int or type(y) == float:
@@ -19,7 +19,7 @@ class Punto2:
             else:
                 self.__y = 0
         else:
-            self.__y = 0
+            raise TypeError ("O tipo non é válido")
 
     def getX(self):
         return self.__x
@@ -39,3 +39,4 @@ class Punto2:
 
     x=property(getX, setX)
     y=property(getY, setY)
+
