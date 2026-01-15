@@ -40,3 +40,25 @@ class Punto2:
     x=property(getX, setX)
     y=property(getY, setY)
 
+
+
+class Punto3:
+    def __init__(self, x ,y):
+        self.setX(x)
+        self.setY(y)
+    
+    def setX (self, x):
+        if type(x) == int or type(x) == float:
+            if x > 0:
+                self.__x = x
+            else:
+                self.__x = 0
+        else: raise TypeError ("O tipo da coordenada x ten que ser int ou float")
+    
+    def setY (self, y):
+        if type(y) == int or type(y) == float:
+            if y > 0:
+                self.__y = y
+            else:
+                self.__y = 0
+        else: raise TypeError ("O tipo da coordenada x ten que ser int ou float")
