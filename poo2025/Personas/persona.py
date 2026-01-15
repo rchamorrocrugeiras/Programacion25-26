@@ -1,4 +1,4 @@
-from ErrorDNi import DniError
+from ErrorDNI import DniError
 class persoa:
     def __init__(self,nome,dni,idade):
         self.setNome(nome)
