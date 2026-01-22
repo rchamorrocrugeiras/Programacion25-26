@@ -35,6 +35,19 @@ class CalculadoraBinaria:
             return self.__a / self.__b
         else:
             raise ValueError("Operando non válido")
+    
+    def operacion2(self, operando):
+        match operando:
+            case "+":
+                return self.__a + self.__b
+            case "-":
+                return self.__a - self.__b
+            case "*":
+                return self.__a * self.__b
+            case "/":
+                return self.__a / self.__b
+            case _:
+                raise ValueError("Operando non válido")
 
 
     a = property(get_a, set_a)
