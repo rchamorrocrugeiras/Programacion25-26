@@ -1,0 +1,3 @@
+001: Vigo-Ourense Prazas: 00155
+002: Madrid-Barcelona Prazas: 00646
+003: Ourense-Santiago Prazas: 00433
