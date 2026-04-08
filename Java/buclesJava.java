@@ -16,6 +16,29 @@ public class buclesJava {
             System.out.println("3.Sair");
             String op = teclado.nextLine();
             opcion = Integer.parseInt(op);
+            switch (opcion) {
+                case 1:
+                    System.out.println("Bienvenido");
+                    break;
+                case 2:
+                    System.out.println("Hasta luego");
+                    break;
+                case 3:
+                    System.out.println("Programa cerrado");
+                    break;
+                default:
+                    System.out.println("Error de opcion");
+                    break;
+            }
+        }
+        for (int i = 5; i < 20 ;i += 3) {
+            System.out.println("Indice: " + i);
+        }
+        int i = 5;
+        for(;;){
+            System.out.println("Indice: "+ i);
+            i += 3;
+            if (i > 19) break;
         }
     }
 }
