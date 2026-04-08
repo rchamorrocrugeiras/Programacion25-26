@@ -2,11 +2,19 @@ import java.util.Scanner;
 
 public class buclesJava {
     public static void main (String[] args){
+        //Bucle while
         int contador = 0;
-        while (contador <= 5){
-            System.out.println(contador);
+        while (contador <= 5) {
+            System.out.println("Bucle while " + contador);
             contador++;
         }
+        //Buvle do-while
+        contador = 0;
+        do {
+            System.out.println("Bucle do-while " + contador);
+            contador++;
+        } while (contador <= 5);
+        //Scanner es como un input en python
         Scanner teclado = new Scanner(System.in);
         int opcion = 0;
         while (opcion != 3) {
