@@ -28,5 +28,7 @@ public class Persoa {
         Persoa p2 = new Persoa("Manuel", "44556U", 45);
         System.out.println(p1.nome);
         System.out.println(p2.nome);
+        MembroComunidadeEscolar m1 = new MembroComunidadeEscolar("René", "21116332D", 19, 12, "Daniel Castelao");
+        System.out.println(m1.codigoCentro);
     }
 }
