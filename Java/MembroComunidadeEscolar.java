@@ -1,4 +1,4 @@
-public class MembroComunidadeEscolar extends Persoa{
+public class MembroComunidadeEscolar extends Persoa {
     private int codigoCentro;
     private String nomeCentro;
 
@@ -8,7 +8,7 @@ public class MembroComunidadeEscolar extends Persoa{
         this.nomeCentro = nomCentro;
     }
 
-    public String getCodigoCentro() {
+    public int getCodigoCentro() {
         return this.codigoCentro;
     }
 
@@ -23,4 +23,5 @@ public class MembroComunidadeEscolar extends Persoa{
 
     public void setNomeCentro(String nomeCentro) {
         this.nomeCentro = nomeCentro;
+    }
 }

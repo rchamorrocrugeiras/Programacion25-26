@@ -29,6 +29,6 @@ public class Persoa {
         System.out.println(p1.nome);
         System.out.println(p2.nome);
         MembroComunidadeEscolar m1 = new MembroComunidadeEscolar("René", "21116332D", 19, 12, "Daniel Castelao");
-        System.out.println(m1.codigoCentro);
+        // System.out.println(m1.codigoCentro); no funciona porque está privado
     }
 }
