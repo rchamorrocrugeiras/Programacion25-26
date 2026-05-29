@@ -1,3 +1,4 @@
+/*
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
@@ -139,3 +140,4 @@ public class Telefono {
         return true;
     }
 }
+*/
